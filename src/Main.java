@@ -14,7 +14,7 @@ public class Main {
             "Frank,Scott,Eric,Stephen,Andrew,Raymond,Gregory,Joshua,Jerry,Dennis,Walter,Patrick,Peter,Harold,Douglas," +
             "Henry,Carl,Arthur,Ryan,Roger";
 
-    private static final Integer BUFFER_SIZE = 1;
+    private static final Integer BUFFER_SIZE = 1000;
     private static Long currentLinePosition = 0l;
     private static StringBuilder bufferedLine = new StringBuilder("");
     static Matcher matcher = new CommonMatcher(NAMES);
