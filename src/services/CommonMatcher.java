@@ -16,7 +16,10 @@ public class CommonMatcher implements Matcher {
         this.searchWords = searchWords.split(",");
         this.es = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     }
-
+/**
+ * this method each time will run in thread pool and thread which create aggregator will wait
+ * till all task will finished
+ */
     public Future< HashMap<String, ArrayList<WordPosition>>> match(String bufferedText,long currentLinePosition){
         return es.submit(()->{
             HashMap<String, ArrayList<WordPosition>> res = new HashMap<>();
@@ -33,6 +36,10 @@ public class CommonMatcher implements Matcher {
             return res;
         });
     }
+/**
+ *  Searching world recursively if world not found search is stops
+ *  if word founded method will keep search again after last founded word
+ */
 
     private void findWords(String searchWord, String bufferedText, long currentLinePosition, ArrayList<WordPosition> positions, int fromIndex) {
         int index = bufferedText.indexOf(searchWord,fromIndex);

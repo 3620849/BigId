@@ -21,7 +21,9 @@ public class CommonAggregator implements Aggregator {
         this.taskList.add(task);
     }
 
-    //wait and print results
+    /**
+     * this method trips in after text will be iterated and oblige main thread wait till all task will be finished
+     */
     @Override
     public void aggregateResults() {
         this.taskList.forEach(task -> {
@@ -33,13 +35,11 @@ public class CommonAggregator implements Aggregator {
                         resultMap.get(key).addAll(val);
                     });
                 }
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-
         });
         String formatedRes =
                 resultMap.toString()
