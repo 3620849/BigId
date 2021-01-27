@@ -15,7 +15,7 @@ public class Main {
             "Henry,Carl,Arthur,Ryan,Roger";
 
     private static final Integer BUFFER_SIZE = 1000;
-    private static Long currentLinePosition = 0l;
+    private static Long currentLinePosition = 0L;
     private static StringBuilder bufferedLine = new StringBuilder("");
     static Matcher matcher = new CommonMatcher(NAMES);
     static Aggregator aggregator = new CommonAggregator();
