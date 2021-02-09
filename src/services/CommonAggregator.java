@@ -5,6 +5,7 @@ import model.WordPosition;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -28,6 +29,7 @@ public class CommonAggregator implements Aggregator {
     public void aggregateResults() {
         this.taskList.forEach(task -> {
             try {
+
                 HashMap<String, ArrayList<WordPosition>> threadResult = task.get();
                 if (threadResult != null) {
                     threadResult.forEach((key, val) -> {
@@ -35,11 +37,13 @@ public class CommonAggregator implements Aggregator {
                         resultMap.get(key).addAll(val);
                     });
                 }
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+
         });
         String formatedRes =
                 resultMap.toString()

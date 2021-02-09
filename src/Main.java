@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Main {
-    private static String TEXT_LOCATION = "http://norvig.com/big.txt";
+    private static final String TEXT_LOCATION = "http://norvig.com/big.txt";
     private static final String NAMES = "James,John,Robert,Michael,William,David,Richard,Charles,Joseph,Thomas,Christopher,Daniel,Paul,Mark,Donald" +
             ",George,Kenneth,Steven,Edward,Brian,Ronald,Anthony,Kevin,Jason,Matthew,Gary,Timothy,Jose,Larry,Jeffrey," +
             "Frank,Scott,Eric,Stephen,Andrew,Raymond,Gregory,Joshua,Jerry,Dennis,Walter,Patrick,Peter,Harold,Douglas," +
@@ -34,7 +34,7 @@ public class Main {
             URL url = new URL(TEXT_LOCATION);
             try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
                 String line;
-                while (currentLinePosition<14000 && (line = br.readLine()) != null) {
+                while ((line = br.readLine()) != null) {
                     batchLine(line);
                 }
                 if(bufferedLine.length()>0){

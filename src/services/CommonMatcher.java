@@ -40,7 +40,6 @@ public class CommonMatcher implements Matcher {
  *  Searching world recursively if world not found search is stops
  *  if word founded method will keep search again after last founded word
  */
-
     private void findWords(String searchWord, String bufferedText, long currentLinePosition, ArrayList<WordPosition> positions, int fromIndex) {
         int index = bufferedText.indexOf(searchWord,fromIndex);
         if(index==-1){
